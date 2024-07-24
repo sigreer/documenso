@@ -51,6 +51,8 @@ NEXT_PRIVATE_SMTP_HOST
 NEXT_PRIVATE_SMTP_PORT
 NEXT_PRIVATE_SMTP_USERNAME
 NEXT_PRIVATE_SMTP_PASSWORD
+NEXT_PRIVATE_SMTP_FROM_NAME
+NEXT_PRIVATE_SMTP_FROM_ADDRESS
 NEXT_PUBLIC_WEBAPP_URL
 NEXT_PUBLIC_MARKETING_URL
 NEXT_PRIVATE_DATABASE_URL
@@ -65,24 +67,26 @@ It is recommended that you leave the values for optional env vars you choose to 
 Create a `.env` file in the same directory as you ``compose.yml`` file.  This file should contain values for all of the environment variables declared in your ``compose.yml`` file.
 
 > [!NOTE]  
-> Secrets and keys should be at least 40 characters long. To generate random strings on Linux you can use ``pwgen 40 3`` to create three separate strings of the required length.
+> Secrets and keys should be at least 40 characters long and Postgres passwords 16 characters long. You can use Linux's ``pwgen`` tool to generate random strings using the command ``pwgen 40 3 && pwgen 16 1``.
 
 > [!NOTE]  
-> Although several popular MTAs are supported, you can use any valid SMTP credentials when populating the SMTP fields.
+> Although several popular MTAs are supported, you can use any valid SMTP credentials with Documenso, provided your email provider allows external SMTP connections.
 
 ```
-POSTGRES_USER="postgres"
-POSTGRES_PASSWORD="<random-password>"
-POSTGRES_DB="documenso"
-NEXTAUTH_SECRET="<your-secret>"
-NEXT_PRIVATE_ENCRYPTION_KEY="<your-key>"
-NEXT_PRIVATE_ENCRYPTION_SECONDARY_KEY="<your-secondary-key>"
-NEXT_PUBLIC_WEBAPP_URL="<your-url>"
-NEXT_PRIVATE_SMTP_TRANSPORT="smtp-auth"
-NEXT_PRIVATE_SMTP_HOST="<your-host>"
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=<random-password>
+POSTGRES_DB=documenso
+NEXTAUTH_SECRET=<your-secret>
+NEXT_PRIVATE_ENCRYPTION_KEY=<your-key>
+NEXT_PRIVATE_ENCRYPTION_SECONDARY_KEY=<your-secondary-key>
+NEXT_PUBLIC_WEBAPP_URL=<your-url>
+NEXT_PRIVATE_SMTP_TRANSPORT=smtp-auth
+NEXT_PRIVATE_SMTP_HOST=<your-host>
 NEXT_PRIVATE_SMTP_PORT=<your-port>
-NEXT_PRIVATE_SMTP_USERNAME="<your-username>"
-NEXT_PRIVATE_SMTP_PASSWORD="<your-password>"
+NEXT_PRIVATE_SMTP_USERNAME=<your-username>
+NEXT_PRIVATE_SMTP_PASSWORD=<your-password>
+NEXT_PRIVATE_SMTP_FROM_NAME=name <name@email>
+NEXT_PRIVATE_SMTP_FROM_ADDRESS=
 NEXT_PRIVATE_DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@database/${POSTGRES_DB}
 NEXT_PRIVATE_DIRECT_DATABASE_URL=${NEXT_PRIVATE_DATABASE_URL}
 ```
