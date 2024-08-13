@@ -409,6 +409,7 @@ model Recipient {
 enum FieldType {
   SIGNATURE
   FREE_SIGNATURE
+  INITIALS
   NAME
   EMAIL
   DATE
@@ -480,6 +481,7 @@ enum TeamMemberRole {
 enum TeamMemberInviteStatus {
   ACCEPTED
   PENDING
+  DECLINED
 }
 
 model Team {
