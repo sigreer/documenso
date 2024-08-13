@@ -47,7 +47,7 @@ export const FieldItem = ({
   field,
   passive,
   disabled,
-  minHeight,
+  minHeight = 10,
   minWidth,
   onResize,
   onMove,
@@ -160,7 +160,8 @@ export const FieldItem = ({
         'pointer-events-none cursor-not-allowed opacity-75': disabled,
         'z-10': !active || disabled,
       })}
-      minHeight={fixedSize ? '' : minHeight || 'auto'}
+      minHeight={10}
+
       minWidth={fixedSize ? '' : minWidth || 'auto'}
       default={{
         x: coords.pageX,
